@@ -1,11 +1,11 @@
 const { User } = require("../models/User");
 
 let auth = (req, res, next) => {
-  // 인증처리
+  // Certification process
   // bring token from client cookie
   let token = req.cookies.x_auth;
 
-  // find user after token 복호화
+  // find user after token Decryption
   User.findByToken(token, (err, user) => {
     if (err) throw err;
     if (!user) return res.json({ isAuth: false, error: true });
