@@ -1,7 +1,11 @@
-import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../_actions/user_action';
+import { useNavigate } from 'react-router-dom';
 
-export default function LoginPage() {
+function LoginPage() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
 
@@ -21,7 +25,13 @@ export default function LoginPage() {
       password: Password,
     };
 
-    axios.post('/api/users/login', body).then((response) => {});
+    dispatch(loginUser(body)).then((response) => {
+      if (response.payload.loginSuccess) {
+        navigate('/');
+      } else {
+        alert('Error');
+      }
+    });
   };
 
   return (
@@ -37,3 +47,5 @@ export default function LoginPage() {
     </React.Fragment>
   );
 }
+
+export default LoginPage;
