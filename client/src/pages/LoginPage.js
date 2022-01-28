@@ -98,7 +98,6 @@ function LoginPage() {
             type="submit"
             fullWidth
             variant="contained"
-            // mt: margin-top , mb: margin-bottom
             sx={{ mt: 3, mb: 2 }}
           >
             Sign In
