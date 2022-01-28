@@ -15,6 +15,7 @@ import {
   Box,
   Container,
 } from '@mui/material';
+import Copyright from '../components/Copyright';
 
 function LoginPage() {
   const dispatch = useDispatch();
@@ -116,6 +117,7 @@ function LoginPage() {
           </Grid>
         </Box>
       </Box>
+      <Copyright sx={{ mt: 8, mb: 4 }} />
     </Container>
   );
 }
