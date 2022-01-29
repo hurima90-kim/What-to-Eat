@@ -1,8 +1,11 @@
 import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from '../components/Navbar';
+import withRoot from '../withRoot';
+import MainCotent from '../components/MainCotent';
 
-export default function WelcomePage() {
+function WelcomePage() {
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,8 +24,10 @@ export default function WelcomePage() {
 
   return (
     <React.Fragment>
-      메인 페이지
-      <button onClick={onClickHandler}>Logout</button>
+      <Navbar />
+      <MainCotent />
     </React.Fragment>
   );
 }
+
+export default withRoot(WelcomePage);
