@@ -8,6 +8,7 @@ const Content = styled('div')({
   justifyContent: 'center',
   alignItems: 'center',
   width: '100vw',
+  height: '50vh',
   marginTop: '60px',
   padding: '40px 0 60px',
 });

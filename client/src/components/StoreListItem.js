@@ -9,7 +9,7 @@ import React from 'react';
 
 function StoreListItem() {
   return (
-    <Card sx={{ minWidth: 275 }}>
+    <Card sx={{ minWidth: 275 }} sx={{ mb: 2 }}>
       <CardContent>
         <Typography variant="h5" component="div">
           일산일품버섯집
@@ -21,7 +21,7 @@ function StoreListItem() {
           버섯이 다양하고 깔끔하니 맛있어요
         </Typography>
       </CardContent>
-      <CardActions>
+      <CardActions style={{ display: 'flex', justifyContent: 'flex-end' }}>
         <Button size="small">More</Button>
       </CardActions>
     </Card>

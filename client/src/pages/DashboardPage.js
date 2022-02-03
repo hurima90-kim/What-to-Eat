@@ -1,18 +1,21 @@
 import React from 'react';
 import HeaderContent from '../components/HeaderContent';
 import Navbar from '../components/Navbar';
-import { Container, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 import StoreListItem from '../components/StoreListItem';
 import SelectedMenu from '../components/SelectedMenu';
+import Write from '../components/Write';
+import WeatherInfo from '../components/WeatherInfo';
 
 function DashboardPage() {
   return (
     <React.Fragment>
       <Navbar />
       <HeaderContent />
-      <Grid container rowSpacing={3} spacing={3}>
+      <Grid container rowSpacing={3} spacing={3} padding="0 80px">
         <Grid item xs={3}>
-          좌측
+          <Write />
+          <WeatherInfo />
         </Grid>
         <Grid item xs={6}>
           <StoreListItem />
