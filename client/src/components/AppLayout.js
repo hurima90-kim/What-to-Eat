@@ -1,23 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
+import Navbar from './Navbar';
+import { Grid } from '@mui/material';
 
 function AppLayout({ children }) {
   return (
-    <div>
-      <div>
-        <Link href="/">
-          <a>왓투잇</a>
-        </Link>
-        <Link href="/sigin">
-          <a>로그인</a>
-        </Link>
-        <Link href="/signup">
-          <a>회원가입</a>
-        </Link>
-      </div>
-      {children}
-    </div>
+    <React.Fragment>
+      <Navbar />
+      <Grid container spacing={2}>
+        <Grid item xs={12} md={3}>
+          왼쪽메뉴
+        </Grid>
+        <Grid item xs={12} md={6}>
+          {children}
+        </Grid>
+        <Grid item xs={12} md={3}>
+          오른쪽메뉴
+        </Grid>
+      </Grid>
+    </React.Fragment>
   );
 }
 

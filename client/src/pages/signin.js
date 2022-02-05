@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { loginUser } from './src/_actions/user_action';
-import { useNavigate } from 'react-router-dom';
+import React, { useCallback } from 'react';
+import PropTypes from 'prop-types';
+import Link from 'next/link';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {
   TextField,
@@ -9,44 +8,36 @@ import {
   Checkbox,
   FormControlLabel,
   Grid,
-  Link,
   Typography,
   Avatar,
   Box,
   Container,
 } from '@mui/material';
 import Copyright from '../components/Copyright';
+import useInput from '../hooks/useInput';
 
-function LoginPage() {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const [Email, setEmail] = useState('');
-  const [Password, setPassword] = useState('');
+function SignInPage({ setIsLoggedIn }) {
+  const [Email, onEmailHandler] = useInput('');
+  const [Password, onPasswordHandler] = useInput('');
+  // const [Email, setEmail] = useState('');
+  // const [Password, setPassword] = useState('');
 
-  const onEmailHandler = (event) => {
-    setEmail(event.currentTarget.value);
-  };
+  // const onEmailHandler = useCallback((event) => {
+  //   setEmail(event.currentTarget.value);
+  // }, []);
 
-  const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value);
-  };
+  // const onPasswordHandler = useCallback((event) => {
+  //   setPassword(event.currentTarget.value);
+  // }, []);
 
-  const onSubmitHandler = (event) => {
-    event.preventDefault();
-
-    let body = {
-      email: Email,
-      password: Password,
-    };
-
-    dispatch(loginUser(body)).then((response) => {
-      if (response.payload.loginSuccess) {
-        navigate('/');
-      } else {
-        alert('Error');
-      }
-    });
-  };
+  const onSubmitHandler = useCallback(
+    (event) => {
+      event.preventDefault();
+      setIsLoggedIn(true);
+      console.log(Email, Password);
+    },
+    [Email, Password]
+  );
 
   return (
     <Container component="main" maxWidth="xs">
@@ -66,6 +57,7 @@ function LoginPage() {
         </Typography>
         <Box
           component="form"
+          // onFinish={onSubmitHandler}
           onSubmit={onSubmitHandler}
           noValidate
           sx={{ mt: 1 }}
@@ -104,13 +96,13 @@ function LoginPage() {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="/" variant="body2">
-                Forgot password?
+              <Link href="/">
+                <a>Forgot password?</a>
               </Link>
             </Grid>
             <Grid item>
-              <Link href="/register" variant="body2">
-                {"Don't have an account? Sign Up"}
+              <Link href="/signup">
+                <a>{"Don't have an account? Sign Up"}</a>
               </Link>
             </Grid>
           </Grid>
@@ -121,4 +113,8 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+SignInPage.propTypes = {
+  setIsLoggedIn: PropTypes.func.isRequired,
+};
+
+export default SignInPage;

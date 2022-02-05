@@ -1,102 +1,70 @@
-import * as React from 'react';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { AppBar, Box, Toolbar, Link, Chip, Avatar } from '@mui/material';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import React, { useState } from 'react';
+import Link from 'next/link';
+import {
+  AppBar,
+  Avatar,
+  Box,
+  Button,
+  Container,
+  IconButton,
+  Tooltip,
+  Toolbar,
+  Typography,
+} from '@mui/material';
+import Image from 'next/image';
 
-const rightLink = {
-  fontSize: 16,
-  color: 'common.white',
-  ml: 3,
-};
-
-export default function Navbar() {
-  const navigate = useNavigate();
-  const isLoggedIn = useSelector((state) => state.user);
-
-  const onClickHandler = () => {
-    axios.get(`/api/users/logout`).then((response) => {
-      if (response.payload.loginSuccess) {
-        navigate('/login');
-      } else {
-        alert('로그아웃하는데 실패했습니다.');
-      }
-    });
-  };
+function Navbar() {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  console.log(isLoggedIn);
 
   return (
-    <React.Fragment>
-      <AppBar position="fixed">
-        <Toolbar sx={{ justifyContent: 'space-between' }}>
-          <Box sx={{ flex: 1 }} />
-          <Link
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters>
+          <Typography
             variant="h6"
-            underline="none"
-            color="inherit"
-            href="/"
-            sx={{ fontSize: 24 }}
+            noWrap
+            component="div"
+            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            {'WhatToEat'}
-          </Link>
-          {!isLoggedIn ? (
-            <Box
-              sx={{
-                flex: 1,
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-              }}
-            >
-              <Link
-                color="inherit"
-                variant="h6"
-                underline="none"
-                href="/login"
-                sx={rightLink}
-              >
-                {'Sign In'}
+            <Image
+              src="/images/logo_transparent.png"
+              alt="logo"
+              width="150px"
+              height="100%"
+            />
+          </Typography>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
+            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+              <Link href="/list">
+                <a>List</a>
               </Link>
-              <Chip
-                label="Sign Up"
-                component="a"
-                href="/register"
-                clickable
-                sx={{ ...rightLink, color: 'secondary.main' }}
-              />
-            </Box>
-          ) : (
-            <Box
-              sx={{
-                flex: 1,
-                display: 'flex',
-                justifyContent: 'flex-end',
-                alignItems: 'center',
-              }}
-            >
-              <Link
-                color="inherit"
-                variant="h6"
-                underline="none"
-                href="/login"
-                sx={rightLink}
-                onClick={onClickHandler}
-              >
-                {'Logout'}
+            </Button>
+            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+              <Link href="/signup">
+                <a>SignUp</a>
               </Link>
-              <Avatar
-                sx={{
-                  width: 24,
-                  height: 24,
-                  marginLeft: 2,
-                }}
-              >
-                <AccountCircleIcon />
-              </Avatar>
-            </Box>
-          )}
+            </Button>
+          </Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Sign In">
+              {isLoggedIn ? (
+                <IconButton sx={{ p: 0 }}>
+                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                </IconButton>
+              ) : (
+                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                  <Link href="/signin">
+                    <a>SignIn</a>
+                  </Link>
+                </Button>
+              )}
+            </Tooltip>
+          </Box>
         </Toolbar>
-      </AppBar>
-    </React.Fragment>
+      </Container>
+    </AppBar>
   );
 }
+
+export default Navbar;
