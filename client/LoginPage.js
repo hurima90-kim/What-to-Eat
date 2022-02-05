@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../_actions/user_action';
+import { loginUser } from './src/_actions/user_action';
 import { useNavigate } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {
@@ -15,7 +15,7 @@ import {
   Box,
   Container,
 } from '@mui/material';
-import Copyright from '../components/Copyright';
+import Copyright from './Copyright';
 
 function LoginPage() {
   const dispatch = useDispatch();
