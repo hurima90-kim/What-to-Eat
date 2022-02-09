@@ -11,7 +11,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-import Image from 'next/image';
+// import Image from 'next/image';
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,20 +27,21 @@ function Navbar() {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            <Image
+            WhatToEat
+            {/* <Image
               src="/images/logo_transparent.png"
               alt="logo"
               width="150px"
               height="100%"
-            />
+            /> */}
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+            <Button>
               <Link href="/list">
                 <a>List</a>
               </Link>
             </Button>
-            <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+            <Button>
               <Link href="/signup">
                 <a>SignUp</a>
               </Link>
@@ -53,7 +54,7 @@ function Navbar() {
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </IconButton>
               ) : (
-                <Button sx={{ my: 2, color: 'white', display: 'block' }}>
+                <Button>
                   <Link href="/signin">
                     <a>SignIn</a>
                   </Link>
