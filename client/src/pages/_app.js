@@ -16,7 +16,7 @@ function App(props) {
       <Head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <link rel="shortcut icon" href="/images/favicon.png" />
+        <link rel="shortcut icon" href="/images/favicon.ico" />
         <title>WhatToEat</title>
       </Head>
       <ThemeProvider theme={theme}>

@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react';
 import PropTypes from 'prop-types';
-import Link from 'next/link';
+// import Link from 'next/link';
+import Link from '../components/Link';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import {
   TextField,
@@ -96,14 +97,26 @@ function SignInPage({ setIsLoggedIn }) {
           </Button>
           <Grid container>
             <Grid item xs>
-              <Link href="/">
-                <a>Forgot password?</a>
-              </Link>
+              <Button
+                variant="text"
+                component={Link}
+                href="/"
+                disableRipple
+                color="secondary"
+              >
+                Forgot password?
+              </Button>
             </Grid>
             <Grid item>
-              <Link href="/signup">
-                <a>{"Don't have an account? Sign Up"}</a>
-              </Link>
+              <Button
+                variant="text"
+                component={Link}
+                href="/signup"
+                disableRipple
+                color="secondary"
+              >
+                {"Don't have an account? Sign Up"}
+              </Button>
             </Grid>
           </Grid>
         </Box>

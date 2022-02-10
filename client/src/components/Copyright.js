@@ -1,13 +1,19 @@
-import { Link, Typography } from '@mui/material';
+import { Link, Typography, Button } from '@mui/material';
 import React from 'react';
 
 export default function Copyright(props) {
   return (
     <Typography varint="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
-      <Link href="/" color="inherit">
+      <Button
+        variant="text"
+        component={Link}
+        href="/"
+        disableRipple
+        color="inherit"
+      >
         WhatToEat
-      </Link>{' '}
+      </Button>{' '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>

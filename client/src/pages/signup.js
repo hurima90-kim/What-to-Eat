@@ -1,6 +1,6 @@
 import React, { useCallback, useState } from 'react';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import Link from 'next/link';
+import Link from '../components/Link';
 import {
   TextField,
   Button,
@@ -136,11 +136,17 @@ export default function RegisterPage() {
             >
               Sign Up
             </Button>
-            <Grid container justifyContent="flex-end">
+            <Grid container justifyContent="center">
               <Grid item>
-                <Link href="/login">
-                  <a>Already have an account? Sign In</a>
-                </Link>
+                <Button
+                  variant="text"
+                  component={Link}
+                  href="/signin"
+                  disableRipple
+                  color="secondary"
+                >
+                  Already have an account? Sign In
+                </Button>
               </Grid>
             </Grid>
           </Grid>

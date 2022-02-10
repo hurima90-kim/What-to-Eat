@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Link from 'next/link';
+import Link from './Link';
 import {
   AppBar,
   Avatar,
@@ -11,7 +11,7 @@ import {
   Toolbar,
   Typography,
 } from '@mui/material';
-// import Image from 'next/image';
+import Image from 'next/image';
 
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -27,24 +27,40 @@ function Navbar() {
             component="div"
             sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
           >
-            WhatToEat
-            {/* <Image
-              src="/images/logo_transparent.png"
+            <Image
+              src="/images/logo.png"
               alt="logo"
               width="150px"
-              height="100%"
-            /> */}
+              height="50px"
+            />
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button>
-              <Link href="/list">
-                <a>List</a>
-              </Link>
+            <Button
+              variant="text"
+              component={Link}
+              href="/"
+              disableRipple
+              sx={{ color: 'white' }}
+            >
+              Home
             </Button>
-            <Button>
-              <Link href="/signup">
-                <a>SignUp</a>
-              </Link>
+            <Button
+              variant="text"
+              component={Link}
+              href="/"
+              disableRipple
+              sx={{ color: 'white' }}
+            >
+              List
+            </Button>
+            <Button
+              variant="text"
+              component={Link}
+              href="/signup"
+              disableRipple
+              sx={{ color: 'white' }}
+            >
+              SignUp
             </Button>
           </Box>
           <Box sx={{ flexGrow: 0 }}>
@@ -54,10 +70,14 @@ function Navbar() {
                   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                 </IconButton>
               ) : (
-                <Button>
-                  <Link href="/signin">
-                    <a>SignIn</a>
-                  </Link>
+                <Button
+                  variant="text"
+                  component={Link}
+                  href="/signin"
+                  disableRipple
+                  sx={{ color: 'white' }}
+                >
+                  SignIn
                 </Button>
               )}
             </Tooltip>
