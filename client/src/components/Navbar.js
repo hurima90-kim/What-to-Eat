@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
+import React, { useCallback } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from './Link';
 import {
   AppBar,
-  Avatar,
+  // Avatar,
   Box,
   Button,
   Container,
-  IconButton,
+  // IconButton,
   Tooltip,
   Toolbar,
   Typography,
 } from '@mui/material';
 import Image from 'next/image';
+import { logoutAction } from '../reducers';
 
 function Navbar() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  console.log(isLoggedIn);
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.user.isLoggedIn);
+
+  const logoutHandler = useCallback(() => {
+    dispatch(logoutAction());
+  });
 
   return (
     <AppBar position="static">
@@ -66,9 +72,20 @@ function Navbar() {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Sign In">
               {isLoggedIn ? (
-                <IconButton sx={{ p: 0 }}>
-                  <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                </IconButton>
+                // <IconButton sx={{ p: 0 }}>
+                //   <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                // </IconButton>
+                <Button
+                  type="submit"
+                  onClick={logoutHandler}
+                  variant="text"
+                  component={Link}
+                  href="/"
+                  disableRipple
+                  sx={{ color: 'white' }}
+                >
+                  Logout
+                </Button>
               ) : (
                 <Button
                   variant="text"

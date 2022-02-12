@@ -6,6 +6,8 @@ import theme from '../theme/theme';
 import { CacheProvider } from '@emotion/react';
 import createEmotionCache from '../createEmotionCache';
 
+import wrapper from '../store/configureStore';
+
 const clientSideEmotionCache = createEmotionCache();
 
 function App(props) {
@@ -33,4 +35,4 @@ App.propTypes = {
   pageProps: PropTypes.object.isRequired,
 };
 
-export default App;
+export default wrapper.withRedux(App);

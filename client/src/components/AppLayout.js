@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Navbar from './Navbar';
 import { Grid } from '@mui/material';
+import Copyright from './Copyright';
+import UserProfile from './UserProfile';
 
 function AppLayout({ children }) {
   return (
@@ -9,13 +11,16 @@ function AppLayout({ children }) {
       <Navbar />
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
-          왼쪽메뉴
+          <UserProfile />
         </Grid>
         <Grid item xs={12} md={6}>
           {children}
         </Grid>
         <Grid item xs={12} md={3}>
           오른쪽메뉴
+        </Grid>
+        <Grid item xs={12} md={12}>
+          <Copyright />
         </Grid>
       </Grid>
     </React.Fragment>

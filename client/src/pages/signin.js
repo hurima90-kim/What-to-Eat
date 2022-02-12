@@ -16,25 +16,18 @@ import {
 } from '@mui/material';
 import Copyright from '../components/Copyright';
 import useInput from '../hooks/useInput';
+import { useDispatch } from 'react-redux';
+import { loginAction } from '../reducers';
 
-function SignInPage({ setIsLoggedIn }) {
+function SignInPage() {
+  const dispatch = useDispatch();
   const [Email, onEmailHandler] = useInput('');
   const [Password, onPasswordHandler] = useInput('');
-  // const [Email, setEmail] = useState('');
-  // const [Password, setPassword] = useState('');
-
-  // const onEmailHandler = useCallback((event) => {
-  //   setEmail(event.currentTarget.value);
-  // }, []);
-
-  // const onPasswordHandler = useCallback((event) => {
-  //   setPassword(event.currentTarget.value);
-  // }, []);
 
   const onSubmitHandler = useCallback(
     (event) => {
       event.preventDefault();
-      setIsLoggedIn(true);
+      dispatch(loginAction({ Email, Password }));
       console.log(Email, Password);
     },
     [Email, Password]
