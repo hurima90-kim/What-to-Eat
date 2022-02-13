@@ -4,6 +4,7 @@ import Navbar from './Navbar';
 import { Grid } from '@mui/material';
 import Copyright from './Copyright';
 import UserProfile from './UserProfile';
+import Company from './Company';
 
 function AppLayout({ children }) {
   return (
@@ -17,7 +18,7 @@ function AppLayout({ children }) {
           {children}
         </Grid>
         <Grid item xs={12} md={3}>
-          오른쪽메뉴
+          <Company />
         </Grid>
         <Grid item xs={12} md={12}>
           <Copyright />

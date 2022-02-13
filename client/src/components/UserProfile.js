@@ -14,7 +14,7 @@ function UserProfile() {
       maxWidth="md"
       sx={{
         width: '100%',
-        height: '90vh',
+        height: '100%',
         padding: '20px',
         display: 'flex',
         justifyContent: 'flex-start',
@@ -27,8 +27,8 @@ function UserProfile() {
       </Typography>
       <IconButton disabled>
         <Avatar
-          alt="Remy Sharp"
-          src="/static/images/avatar/2.jpg"
+          alt="공승연"
+          src="http://cdnimage.dailian.co.kr/news/201706/news_1498383225_642283_m_1.jpg"
           sx={{ height: '250px', width: '250px', marginBottom: '40px' }}
         />
       </IconButton>
