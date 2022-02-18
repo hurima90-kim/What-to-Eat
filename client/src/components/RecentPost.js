@@ -63,16 +63,6 @@ function RecentPost() {
             secondary="2022.02.12"
           />
         </ListItem>
-        <Divider variant="inset" component="li" />
-        <ListItem>
-          <ListItemAvatar>
-            <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-          </ListItemAvatar>
-          <ListItemText
-            primary="What do you want to eat for today?"
-            secondary="2022.02.12"
-          />
-        </ListItem>
       </List>
     </React.Fragment>
   );
