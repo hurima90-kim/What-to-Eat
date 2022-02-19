@@ -8,7 +8,7 @@ import Company from './Company';
 
 function AppLayout({ children }) {
   return (
-    <React.Fragment>
+    <div style={{ minHeight: '100vh' }}>
       <Navbar />
       <Grid container spacing={2}>
         <Grid item xs={12} md={3}>
@@ -24,7 +24,7 @@ function AppLayout({ children }) {
           <Copyright />
         </Grid>
       </Grid>
-    </React.Fragment>
+    </div>
   );
 }
 

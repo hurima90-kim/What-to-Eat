@@ -25,7 +25,7 @@ function Company() {
       {/* <Typography variant="h5" sx={{ marginBottom: '60px' }}>
         Team History
       </Typography> */}
-      <Card sx={{ marginBottom: '60px' }}>
+      <Card sx={{ mb: '60px' }}>
         <CardMedia
           component="img"
           image="https://image.rocketpunch.com/company/88124/ju-negsibil_logo_1636441582.png?s=400x400&t=inside"

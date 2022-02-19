@@ -12,7 +12,7 @@ import React from 'react';
 function RecentPost() {
   return (
     <React.Fragment>
-      <Typography>Recent Posts</Typography>
+      <Typography sx={{ mb: '40px' }}>Recent Posts</Typography>
       <List sx={{ width: '100%' }}>
         <ListItem>
           <ListItemAvatar>

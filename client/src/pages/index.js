@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import { Box, Tab, Tabs, Typography, useTheme } from '@mui/material';
 import AppLayout from '../components/AppLayout';
 
+import Roulette from '../components/tab/roulette';
+import RestaurantList from '../components/tab/list';
+
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
 
@@ -68,10 +71,10 @@ function index() {
           onChangeIndex={handleChangeIndex}
         >
           <TabPanel value={value} index={0} dir={theme.direction}>
-            Item one
+            <Roulette />
           </TabPanel>
           <TabPanel value={value} index={1} dir={theme.direction}>
-            Item two
+            <RestaurantList />
           </TabPanel>
           <TabPanel value={value} index={2} dir={theme.direction}>
             Item three

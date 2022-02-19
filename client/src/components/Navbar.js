@@ -10,7 +10,7 @@ import {
   // IconButton,
   Tooltip,
   Toolbar,
-  Typography,
+  IconButton,
 } from '@mui/material';
 import Image from 'next/image';
 import { logoutAction } from '../reducers';
@@ -27,49 +27,28 @@ function Navbar() {
     <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <Typography
-            variant="h6"
-            noWrap
-            component="div"
-            sx={{ mr: 2, display: { xs: 'none', md: 'flex' } }}
-          >
+          <IconButton component={Link} href="/">
             <Image
               src="/images/logo.png"
               alt="logo"
               width="150px"
               height="50px"
             />
-          </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            <Button
-              variant="text"
-              component={Link}
-              href="/"
-              disableRipple
-              sx={{ color: 'white' }}
-            >
-              Home
-            </Button>
-            <Button
-              variant="text"
-              component={Link}
-              href="/"
-              disableRipple
-              sx={{ color: 'white' }}
-            >
-              List
-            </Button>
-            <Button
-              variant="text"
-              component={Link}
-              href="/signup"
-              disableRipple
-              sx={{ color: 'white' }}
-            >
-              SignUp
-            </Button>
-          </Box>
+          </IconButton>
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}></Box>
           <Box sx={{ flexGrow: 0 }}>
+            <Tooltip title="Sign Up">
+              <Button
+                variant="outlined"
+                component={Link}
+                color="secondary"
+                href="/signup"
+                disableRipple
+                sx={{ color: 'secondary', mr: '20px' }}
+              >
+                SignUp
+              </Button>
+            </Tooltip>
             <Tooltip title="Sign In">
               {isLoggedIn ? (
                 // <IconButton sx={{ p: 0 }}>
@@ -78,7 +57,8 @@ function Navbar() {
                 <Button
                   type="submit"
                   onClick={logoutHandler}
-                  variant="text"
+                  variant="contained"
+                  color="secondary"
                   component={Link}
                   href="/"
                   disableRipple
@@ -88,7 +68,8 @@ function Navbar() {
                 </Button>
               ) : (
                 <Button
-                  variant="text"
+                  variant="contained"
+                  color="secondary"
                   component={Link}
                   href="/signin"
                   disableRipple
